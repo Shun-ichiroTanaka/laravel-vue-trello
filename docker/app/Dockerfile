@@ -22,3 +22,10 @@ libpq-dev \
 # Laravelで必要になるmodRewriteを有効化する
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
 RUN /bin/sh -c a2enmod rewrite
+
+# npmとnode
+RUN apt-get install -y nodejs \
+    npm
+
+# sudoを使えるように
+RUN apt-get install -y sudo
