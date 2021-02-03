@@ -41,7 +41,6 @@ jobs:
           paths:
             - src/laravelapp/vendor
       - run:
-          working_directory: src/laravelapp
           name: "Composer Install"
           command: composer install
 
