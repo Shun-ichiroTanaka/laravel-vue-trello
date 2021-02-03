@@ -50,14 +50,14 @@ jobs:
             - src/laravelapp/vendor
 
       - run: 
-          working_directory: src/laravelapp
-          php artisan key:generate
+        working_directory: src/laravelapp
+        command: php artisan key:generate
 
       - run: 
-          working_directory: src/laravelapp
-          php artisan migrate
-
+        working_directory: src/laravelapp
+        command: php artisan migrate
+      
       - run:
           working_directory: src/laravelapp
           name: "Run Unit Tests"
-          command: ./vendor/bin/phpunit
+          command: ./vendor/bin/phpunit tests/Unit
