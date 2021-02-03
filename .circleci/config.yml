@@ -46,7 +46,6 @@ jobs:
           command: composer install
 
       - run:
-          working_directory: src/laravelapp
           name: "Generate App key"
           command: php artisan key:generate
 
