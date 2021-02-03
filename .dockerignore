@@ -1,0 +1,8 @@
+# ローカル環境では envファイルから読込
+# ECS 環境では、AWS Systems Manager のパラメータストアから取得
+# イメージのビルド時に必要のないディレクトリ（vendor,node_modules）や
+# ファイル（.env）を.dockerignore を使って除外
+
+src/vendor
+src/node_modules
+src/.env

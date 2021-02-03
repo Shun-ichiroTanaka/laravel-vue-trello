@@ -29,22 +29,22 @@ jobs:
       - run:
           name: "Create Environment file"
           command: |
-            mv src/laravelapp/.env.deploy .env
+            mv laravel/.env.deploy .env
 
       # Download and cache dependencies
       - restore_cache:
           keys:
             # "composer.lock" can be used if it is committed to the repo
-            - v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
+            - v1-dependencies-{{ checksum "laravel/composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
-          working_directory: src/laravelapp
+          working_directory: laravel
           name: "Install Dependencies"
           command: composer install -n --prefer-dist
 
       - save_cache:
-          key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
+          key: v1-dependencies-{{ checksum "laravel/composer.json" }}
           paths:
-            - src/laravelapp/vendor
+            - laravel/vendor
