@@ -32,6 +32,7 @@ jobs:
             - v1-dependencies-
 
       - run:
+          working_directory: src/laravelapp
           name: "Install Dependencies"
           command: composer install -n --prefer-dist
 
