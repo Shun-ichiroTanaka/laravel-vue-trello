@@ -50,7 +50,7 @@ jobs:
 
       - run: 
         working_directory: src/laravelapp
-        echo "APP_KEY=" > .env.testing
+        echo "APP_KEY=" > .env.deploy
 
             - run: 
               working_directory: src/laravelapp
