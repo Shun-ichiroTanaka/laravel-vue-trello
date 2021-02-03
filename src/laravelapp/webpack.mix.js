@@ -28,6 +28,7 @@ mix
 })
 
 // キャッシュ削除
-if(mix.inProduction()){
-    mix.version()
-}
+// if(mix.inProduction()){
+    // mix.
+    .version();
+// }
