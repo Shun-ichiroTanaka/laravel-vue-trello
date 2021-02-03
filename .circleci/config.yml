@@ -48,8 +48,3 @@ jobs:
           key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
           paths:
             - src/laravelapp/vendor
-      
-      - run:
-          working_directory: src/laravelapp
-          name: "Run Unit Tests"
-          command: ./vendor/bin/phpunit tests/Unit
