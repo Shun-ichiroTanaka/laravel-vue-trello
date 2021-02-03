@@ -3,6 +3,7 @@ src/laravelapp/public/hot/
 src/laravelapp/public/storage/
 src/laravelapp/public/css/
 src/laravelapp/public/js/
+src/laravelapp/public/mix-manifest.json
 src/laravelapp/storage/*.key
 src/laravelapp/vendor/
 src/laravelapp/.env
