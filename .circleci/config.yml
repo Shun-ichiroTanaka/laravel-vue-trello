@@ -26,14 +26,11 @@ jobs:
             - v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
             - v1-dependencies-
  
-      - run: 
-          working_directory: src/laravelapp
-          composer install -n --prefer-dist
+      - run: composer install -n --prefer-dist
  
       - save_cache:
           key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
-          paths:
-            - src/laravelapp/vendor
+          paths: - src/laravelapp/vendor
  
       - run: echo "APP_KEY=" > .env.deploy
       - run: php artisan key:generate
