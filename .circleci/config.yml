@@ -22,26 +22,21 @@ jobs:
       - run: sudo docker-php-ext-install pdo_mysql
  
       - restore_cache:
-          key: - composer-v2-{{ checksum "src/laravelapp/composer.lock" }}
-      
-      - restore_cache:
-          key: npm-v2-{{ checksum "src/laravelapp/package-lock.json" }}
-
-      - run: composer install -n --prefer-dist
+          keys:
+            - v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
+            - v1-dependencies-
+ 
+      - run: 
+          working_directory: src/laravelapp
+          composer install -n --prefer-dist
  
       - save_cache:
-          key: npm-v2-{{ checksum "src/laravelapp/package-lock.json" }}
+          key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
           paths:
-            - src/laravelapp/node_modules
+            - src/laravelapp/vendor
  
-      - run: 
-          working_directory: src/laravelapp
-          echo "APP_KEY=" > .env.deplpy
-      - run: 
-          working_directory: src/laravelapp
-          php artisan key:generate
-      - run:
-          working_directory: src/laravelapp
-          php artisan migrate
+      - run: echo "APP_KEY=" > .env.deploy
+      - run: php artisan key:generate
+      - run: php artisan migrate
  
       - run: src/laravelapp/vendor/bin/phpunit
