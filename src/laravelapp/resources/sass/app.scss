@@ -1,9 +1,7 @@
-@tailwind base;
-@tailwind components;
-
+@import "~tailwindcss/dist/base.css";
+@import "~tailwindcss/dist/components.css";
+@import "~tailwindcss/dist/utilities.css";
 
 // Variables
 @import 'foundation/variables';
 @import 'foundation/base';
-
-@tailwind utilities;

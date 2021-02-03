@@ -1,8 +1,10 @@
 module.exports = {
     important: true,
-
-    purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.jsx'],
-
+    purge: [
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+    ],
     theme: {
       extend: {}
     },

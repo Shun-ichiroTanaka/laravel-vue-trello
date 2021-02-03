@@ -4,13 +4,22 @@ require('laravel-mix-purgecss');
 
 mix
 .js('resources/js/app.js', 'public/js')
-// sass
-.sass('resources/sass/app.scss', 'public/css')
-
-// tailwind
+.sass('resources/sass/app.scss', 'public/css', {
+    sassOptions: {
+      outputStyle: 'compressed'
+    }
+})
 .options({
     processCssUrls: false,
     postCss: [ tailwindcss('./tailwind.config.js') ],
+
+    terser: {
+        terserOptions: {
+            compress: {
+                drop_console: true
+            }
+        }
+    }
 }).purgeCss()
 
 
