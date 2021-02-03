@@ -6,8 +6,16 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.4-node-browsers
+    # Specify the version you desire here
+    - image: circleci/php:7.4-node-browsers
+      
+    environment:
+      - APP_DEBUG: true
+      - APP_ENV: deploy
+      - APP_KEY: base64:RH/f4NgS/ypZQ2q20YVcfdyB20/Be9gaRHAVEw+nS2A=
+      - DB_CONNECTION: mysql
+      - DB_DATABASE: default
+      - DB_USERNAME: root
 
     steps:
       - checkout
@@ -40,13 +48,6 @@ jobs:
           key: v1-dependencies-{{ checksum "src/laravelapp/composer.json" }}
           paths:
             - src/laravelapp/vendor
-      - run:
-          name: "Composer Install"
-          command: composer install
-
-      - run:
-          name: "Generate App key"
-          command: php artisan key:generate
 
       # run tests with phpunit
       - run:
