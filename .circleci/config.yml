@@ -42,10 +42,12 @@ jobs:
             - src/laravelapp/vendor
 
       - run:
+          working_directory: src/laravelapp
           name: "Generate App key"
           command: php artisan key:generate
 
       # run tests with phpunit
       - run:
+          working_directory: src/laravelapp
           name: "Run Unit Tests"
           command: ./vendor/bin/phpunit tests/Unit
