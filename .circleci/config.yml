@@ -12,7 +12,6 @@ jobs:
     environment:
       - APP_DEBUG: true
       - APP_ENV: deploy
-      - APP_KEY: base64:RH/f4NgS/ypZQ2q20YVcfdyB20/Be9gaRHAVEw+nS2A=
       - DB_CONNECTION: mysql
       - DB_DATABASE: default
       - DB_USERNAME: root
@@ -49,8 +48,19 @@ jobs:
           paths:
             - src/laravelapp/vendor
 
-      # run tests with phpunit
-      - run:
-          working_directory: src/laravelapp
-          name: "Run Unit Tests"
-          command: ./vendor/bin/phpunit tests/Unit
+      - run: 
+        working_directory: src/laravelapp
+        echo "APP_KEY=" > .env.testing
+
+            - run: 
+              working_directory: src/laravelapp
+              php artisan key:generate
+
+            - run: 
+              working_directory: src/laravelapp
+              php artisan migrate
+      
+          - run:
+              working_directory: src/laravelapp
+              name: "Run Unit Tests"
+              command: ./vendor/bin/phpunit
